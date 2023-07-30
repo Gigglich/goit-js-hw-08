@@ -1,26 +1,34 @@
 import throttle from 'lodash.throttle';
 
 const FORM_KEY = 'feedback-form-state';
+
 form = document.querySelector('.feedback-form');
 
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
-const { email, message } = form.elements;
 let formData = JSON.parse(localStorage.getItem(FORM_KEY)) || {};
+const { email, message } = form.elements;
 
 popularePage();
 
 function onFormInput(e) {
-  e.preventDefault();
+  // e.preventDefault();
   formData = { email: email.value, message: message.value };
   localStorage.setItem(FORM_KEY, JSON.stringify(formData));
 }
 
+function popularePage() {
+  if (formData) {
+    email.value = formData.email || '';
+    message.value = formData.message || '';
+  }
+}
+
 function onFormSubmit(e) {
   e.preventDefault();
-  formData.email = email.value;
-  formData.message = message.value;
+  // formData.email = email.value;
+  // formData.message = message.value;
   console.log({ email: email.value, message: message.value });
 
   if (email.value === '' || message.value === '') {
@@ -30,11 +38,4 @@ function onFormSubmit(e) {
   localStorage.removeItem(FORM_KEY);
   e.currentTarget.reset();
   dataForm = {};
-}
-
-function popularePage() {
-  if (formData) {
-    email.value = formData.email || '';
-    message.value = formData.message || '';
-  }
 }
