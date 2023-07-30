@@ -27,3 +27,12 @@ player
         break;
     }
   });
+
+player
+  .setColor('#00adef')
+  .then(function (color) {
+    console.log('the color that was set: #00adef');
+  })
+  .catch(function (error) {
+    console.log('an error occurred setting the color');
+  });
