@@ -17,13 +17,6 @@ function onFormInput(e) {
   localStorage.setItem(FORM_KEY, JSON.stringify(formData));
 }
 
-function popularePage() {
-  if (formData) {
-    email.value = formData.email || '';
-    message.value = formData.message || '';
-  }
-}
-
 function onFormSubmit(e) {
   e.preventDefault();
   formData.email = email.value;
@@ -36,4 +29,11 @@ function onFormSubmit(e) {
   localStorage.removeItem(FORM_KEY);
   e.currentTarget.reset();
   dataForm = {};
+}
+
+function popularePage() {
+  if (formData) {
+    email.value = formData.email || '';
+    message.value = formData.message || '';
+  }
 }
