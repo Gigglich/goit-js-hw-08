@@ -39,10 +39,3 @@ function onFormSubmit(e) {
   e.currentTarget.reset();
   formData = {};
 }
-
-function popularePage() {
-  if (formData) {
-    email.value = formData.email || '';
-    message.value = formData.message || '';
-  }
-}
