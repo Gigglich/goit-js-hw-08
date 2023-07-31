@@ -34,7 +34,6 @@ function onFormSubmit(e) {
   if (email.value === '' || message.value === '') {
     return alert('Будь-ласка, заповніть всі поля!');
   }
-
   localStorage.removeItem(FORM_KEY);
   e.currentTarget.reset();
   formData = {};
